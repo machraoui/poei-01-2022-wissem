@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.testng', name: 'testng', version: '7.4.0' //bib utilsés//
+               //2 éme temps on doit aj selenium en appuiant tjrs sur le truc bleu//
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0'
+}
+
+test {
+    useTestNG() //2éme modif//
+
+}
