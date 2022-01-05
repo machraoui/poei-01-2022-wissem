@@ -45,7 +45,31 @@ public class tp1 {
 
     @Test
     public void test2()  {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.amazon.fr/");
+        driver.manage().window().maximize();
+        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept")); //
+        buttonCookies.click();
+        WebElement barreRechere = driver.findElement(By.id("twotabsearchtextbox")) ;//id // on a ajouter webelement
+        barreRechere.sendKeys("machine a raclette"); // taper le mot puis il faut appuier sur entrer mais il faut deja accepter les cookies
 
+        barreRechere.sendKeys(Keys.ENTER);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement article1 = driver.findElement(By.cssSelector("[data-asin='B00D2I1VK0']")) ;
+        article1.click();
+        WebElement panier=driver.findElement(By.cssSelector("[title='Ajouter au panier']"));
+        panier.click();
+        WebElement refus = driver.findElement(By.id("attachSiNoCoverage"));
+        refus.click();
+
+
+        driver.quit();
 
 
     }
