@@ -3,13 +3,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class tp1
 {
     WebDriver driver = new ChromeDriver();
-    
+
   @BeforeMethod
     public void setup (){
     driver.get("https://www.amazon.fr/");
@@ -18,7 +19,11 @@ public class tp1
     buttonCookies.click();
 
     }
-
+    @AfterMethod
+    public void teardown ()
+{
+    driver.quit();
+}
 
     @Test //obligatoir pour commencer les tests //
     public void test1()  {
@@ -76,10 +81,7 @@ public class tp1
         panier.click();
         WebElement refus = driver.findElement(By.id("attachSiNoCoverage"));
         refus.click();
-
-
-        driver.quit();
-
+        
 
     }
 
