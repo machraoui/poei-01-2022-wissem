@@ -3,16 +3,25 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class tp1
 {
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver ;
 
   @BeforeMethod
-    public void setup (){
+    public void setup ()
+  {
+      driver = new ChromeDriver();
+      // il faut mettre 2 second d'attente et la exactement sinon a chaque test l'action se repetera a chaque fois et cella et active avec findelement
+    //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); à eviter
+
     driver.get("https://www.amazon.fr/");
     driver.manage().window().maximize();
     WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept")); //
@@ -69,19 +78,35 @@ public class tp1
 
         barreRechere.sendKeys(Keys.ENTER);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         WebElement article1 = driver.findElement(By.cssSelector("[data-asin='B00D2I1VK0']")) ;
         article1.click();
         WebElement panier=driver.findElement(By.cssSelector("[title='Ajouter au panier']"));
         panier.click();
-        WebElement refus = driver.findElement(By.id("attachSiNoCoverage"));
-        refus.click();
+        //WebElement refus = driver.findElement(By.id("attachSiNoCoverage"));
+        //refus.click();
         
+
+    }
+
+    @Test
+    public void trouverlivres ()
+    {
+        driver.findElement(By.id("nav-hamburger-menu")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10) ); // definir la duration 10
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".hmenu-item[data-menu-id='10']")));
+
+        driver.findElement(By.cssSelector(".hmenu-item[data-menu-id='10']")).click();
+
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3) > a")).click();
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3)")).click();
+
+
+
+
+
+
 
     }
 
