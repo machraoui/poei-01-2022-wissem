@@ -3,6 +3,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,8 +19,8 @@ public class tp1
     public void setup ()
   {
       driver = new ChromeDriver();
-      // il faut mettre 2 second d'attente et la exactement sinon a chaque test l'action se repetera a chaque fois
-      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+      // il faut mettre 2 second d'attente et la exactement sinon a chaque test l'action se repetera a chaque fois et cella et active avec findelement
+    //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); à eviter
 
     driver.get("https://www.amazon.fr/");
     driver.manage().window().maximize();
@@ -83,6 +85,28 @@ public class tp1
         //WebElement refus = driver.findElement(By.id("attachSiNoCoverage"));
         //refus.click();
         
+
+    }
+
+    @Test
+    public void trouverlivres ()
+    {
+        driver.findElement(By.id("nav-hamburger-menu")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10) ); // definir la duration 10
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".hmenu-item[data-menu-id='10']")));
+
+        driver.findElement(By.cssSelector(".hmenu-item[data-menu-id='10']")).click();
+
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3) > a")).click();
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3)")).click();
+
+
+
+
+
+
 
     }
 
