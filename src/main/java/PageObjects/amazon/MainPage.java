@@ -1,3 +1,4 @@
+package PageObjects.amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MainPages {
+public class MainPage {
 
     int timeOut = 10;
     WebDriver driver;
@@ -17,7 +18,7 @@ public class MainPages {
 
 
 
-    public MainPages(WebDriver driver){
+    public MainPage (WebDriver driver){
         this.driver = driver;
     };
 
