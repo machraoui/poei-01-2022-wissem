@@ -14,11 +14,11 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public  IphonePage openIphone13ProPage () {
+    public  void openIphone13ProPage () {
 
-        this.driver.findElement(searching13pro).click();
+        driver.findElement(searching13pro).click();
 
-        IphonePage iphonePage = new IphonePage(driver);
-        return iphonePage;
+       /* IphonePage iphonePage = new IphonePage(driver);
+        return iphonePage;*/
     }
 }

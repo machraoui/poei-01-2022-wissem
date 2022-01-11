@@ -8,7 +8,7 @@ public class CartPage {
 
     By productPriceSelector = By.cssSelector("span.sc-product-price");
     By activeCartSubtotalSelector = By.cssSelector("#sc-subtotal-amount-activecart > span");
-    By buyboxCartSubtotalSelector = By.cssSelector("sc-subtotal-amount-buybox > span");
+    By buyboxCartSubtotalSelector = By.cssSelector("#sc-subtotal-amount-buybox > span");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
