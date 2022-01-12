@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -67,4 +68,12 @@ public class AmazonTest {
         Assert.assertEquals(activeCartSubtotal, expectedPrice);
         Assert.assertEquals(buyboxCartSubtotal, expectedPrice);*/
     }
+    @Test
+    public void passedTest() {
+        MainPage mainPage = new MainPage(driver);
+
+        Assert.assertTrue(true);
+    }
+
+
 }
